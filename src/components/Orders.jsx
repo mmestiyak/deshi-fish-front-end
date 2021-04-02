@@ -39,7 +39,7 @@ const Orders = () => {
         console.log(err);
       }
     })();
-  }, []);
+  }, [currentUser]);
 
   if (!orders) return <LoadingSpinner />;
   if (orders.length === 0) {
