@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -17,7 +17,7 @@ const ManageFishes = () => {
 
   const deleteFish = async (id) => {
     try {
-      await axios.delete(`//localhost:8989/fishes/${id}`);
+      await axios.delete(`https://deshi-app.herokuapp.com/fishes/${id}`);
       setFishesUpdated(true);
       alert("fish deleted successfully");
       setFishesUpdated();

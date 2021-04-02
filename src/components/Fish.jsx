@@ -8,7 +8,8 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import CssBaseline from "@material-ui/core/CssBaseline";
-
+import { useFishes } from "../contexts/FishesContext";
+import { useHistory } from "react-router-dom";
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
@@ -19,8 +20,6 @@ const useStyles = makeStyles({
     flexDirection: "column",
   },
   cardMedia: {
-    // paddingTop: "56.25%", // 16:9
-    // paddingTop: "100%", // 16:9
     padding: "100% 5% 0 5%",
   },
   cardContent: {
@@ -28,8 +27,14 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Fish({ image, name, weight, price }) {
+export default function Fish({ image, name, weight, price, _id: id }) {
   const classes = useStyles();
+  const history = useHistory();
+  const { setSelectedFishId } = useFishes();
+  const handleBuyButtonClick = () => {
+    setSelectedFishId(id);
+    history.push("/checkout");
+  };
   return (
     <>
       <CssBaseline />
@@ -48,7 +53,12 @@ export default function Fish({ image, name, weight, price }) {
           <Typography variant="h5" color="primary">
             {price}৳
           </Typography>
-          <Button variant="outlined" size="large" color="primary">
+          <Button
+            onClick={handleBuyButtonClick}
+            variant="outlined"
+            size="large"
+            color="primary"
+          >
             Buy
           </Button>
         </CardActions>

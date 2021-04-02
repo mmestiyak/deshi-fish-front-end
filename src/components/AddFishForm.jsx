@@ -21,10 +21,13 @@ const AddFishForm = () => {
     }
     setButtonDisable(true);
     try {
-      var addedFish = await axios.post("//localhost:8989/fishes", {
-        ...data,
-        image: fishImage,
-      });
+      var addedFish = await axios.post(
+        "https://deshi-app.herokuapp.com/fishes",
+        {
+          ...data,
+          image: fishImage,
+        }
+      );
       setFishesUpdated(true);
       setButtonDisable(false);
       setFishImage();
