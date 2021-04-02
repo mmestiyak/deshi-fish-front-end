@@ -78,9 +78,13 @@ const Orders = () => {
   }
   if (orders) {
     return (
-      <Container style={{ marginTop: "5rem" }} maxWidth="md">
-        <Grid container spacing="3" style={{ minHeight: "100vh" }}>
-          <Grid item xs={12} md={6}>
+      <Container style={{ marginTop: "5rem" }} maxWidth="lg">
+        <Grid
+          container
+          spacing="2"
+          style={{ minHeight: "70vh", display: "flex", alignItems: "center" }}
+        >
+          <Grid item xs={12} md={8}>
             <TableContainer component={Paper}>
               <Table
                 className={classes.table}
@@ -90,6 +94,7 @@ const Orders = () => {
                 <TableHead>
                   <TableRow>
                     <TableCell>Name</TableCell>
+                    <TableCell>Date</TableCell>
                     <TableCell>Quantity</TableCell>
 
                     <TableCell align="right">Weight</TableCell>
@@ -97,10 +102,13 @@ const Orders = () => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {orders.map(({ name, weight, price }) => (
+                  {orders.map(({ name, weight, price, date }) => (
                     <TableRow>
                       <TableCell component="th" scope="row">
                         {name}
+                      </TableCell>
+                      <TableCell align="left">
+                        {new Date(date).toLocaleDateString()}
                       </TableCell>
                       <TableCell align="center">1</TableCell>
                       <TableCell align="right">{weight} (kg)</TableCell>
@@ -112,7 +120,7 @@ const Orders = () => {
             </TableContainer>
           </Grid>
 
-          <Grid item sm={12} md={6}>
+          <Grid item sm={12} md={4}>
             <div style={{ margin: "0 auto" }}>
               <img
                 style={{ maxWidth: "100%", borderRadius: "5px" }}
