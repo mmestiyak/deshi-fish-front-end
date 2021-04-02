@@ -82,7 +82,7 @@ const Orders = () => {
         <Grid container spacing="3" style={{ minHeight: "100vh" }}>
           <Grid item xs={12} md={6}>
             <TableContainer component={Paper}>
-              <TableContainer
+              <Table
                 className={classes.table}
                 size="small"
                 aria-label="a dense table"
@@ -108,7 +108,7 @@ const Orders = () => {
                     </TableRow>
                   ))}
                 </TableBody>
-              </TableContainer>
+              </Table>
             </TableContainer>
           </Grid>
 
